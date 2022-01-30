@@ -41,3 +41,5 @@ __pycache__
 database.db
 __pycache__
 .mypy_cache
+
+.vscode
