@@ -28,7 +28,7 @@ class Car(Base):
     brand: Optional[Brand] = relationship(Brand, lazy="joined", back_populates="cars")
 
 db_url = config('DATABASE_URL', default="sqlite+aiosqlite:///./database.db")
-db_url = db_url.replace('postgres', 'postgresql')
+db_url = db_url.replace('postgres', 'postgresql+asyncpg')
 engine = create_async_engine(
     db_url, connect_args={"check_same_thread": False}
 )
