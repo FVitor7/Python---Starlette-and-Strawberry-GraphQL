@@ -3,6 +3,8 @@ from typing import Optional
 import strawberry
 from sqlalchemy import select
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from strawberry.asgi import GraphQL
 
 import models.models as models
@@ -97,5 +99,12 @@ class Query:
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
 graphql_app = GraphQL(schema)
-app = Starlette()
+
+
+middleware = [
+    Middleware(CORSMiddleware, allow_origins=['*'])
+]
+
+
+app = Starlette(middleware=middleware)
 app.add_route("/graphql", graphql_app)
