@@ -1,3 +1,4 @@
+from decouple import config
 import asyncio
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator, Optional
@@ -26,9 +27,10 @@ class Car(Base):
 
     brand: Optional[Brand] = relationship(Brand, lazy="joined", back_populates="cars")
 
-
+db_url = config('DB_URL') or "sqlite+aiosqlite:///./database.db"
+print(db_url)
 engine = create_async_engine(
-    "sqlite+aiosqlite:///./database.db", connect_args={"check_same_thread": False}
+    db_url, connect_args={"check_same_thread": False}
 )
 
 async_session = sessionmaker(
