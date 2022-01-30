@@ -27,3 +27,4 @@ uvloop==0.16.0
 watchgod==0.7
 websockets==10.1
 python-decouple==3.5
+psycopg2==2.9.3
