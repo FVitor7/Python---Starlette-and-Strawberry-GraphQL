@@ -1,1 +1,1 @@
-# Python-Starlette-and-Strawberry-GraphQL
+# Python-FastAPI-and-Strawberry-GraphQL
